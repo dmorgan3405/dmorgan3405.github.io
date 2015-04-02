@@ -9,21 +9,20 @@ categories: jekyll update
 
 To take advantage of these methods, including the PageObject module is all that is needed.
 
-```ruby
+{% highlight ruby %}
 class LoginPage
   include PageObject
 
   text_field(:username, :id => 'Username')
 end
-
-```
+{% endhighlight %}
 
 Now from a step definition, you can do the following
 
-```ruby
+{% highlight ruby %}
   on(LoginPage).username = 'user1' #sets the text field value
   on(LoginPage).username       #gets the current value  
-```
+{% endhighlight %}
 
 This is fairly basic, but having a good idea of how to properly use these methods can help keep your pages clean. 
 For a better understanding of the usage consider buying a copy of [Cucumber & Cheese ](https://leanpub.com/cucumber_and_cheese) or for a brief intro checkout the[PageObject wiki ](https://github.com/cheezy/page-object/wiki/Get-me-started-right-now!)
@@ -38,7 +37,7 @@ In other words, the object itself has no element state. It only knows how to go 
 
 Each element accesor dynamically defines a set of methods that include the name of the element you are defining.
 
-```ruby
+{% highlight ruby %}
   def text_field(name, identifier={:index => 0}, &block) 
       standard_methods(name, identifier, 'text_field_for', &block)
       define_method(name) do
@@ -50,7 +49,7 @@ Each element accesor dynamically defines a set of methods that include the name 
         self.send("#{name}_element").value = value
       end
   end
-```
+{% endhighlight %}
 
 "#{name}", "#{name}=", "#{name}_element","#{name}?" are just a few examples.
 
