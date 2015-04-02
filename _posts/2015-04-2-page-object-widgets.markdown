@@ -29,11 +29,11 @@ All widgets need to include **PageObject::Elements::Element** in its ancestry.
 Therefore a good place to start is deciding what html best represents the new control 
 and then create a new class
 
-```ruby
-	class AutoComplete < PageObject::Elements::TextField
+{% highlight ruby %}
+class AutoComplete < PageObject::Elements::TextField
 
-	end
-```
+end
+{% endhighlight %}
 
 ## Registration
 
