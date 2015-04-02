@@ -43,20 +43,20 @@ Adding the widget is straight forward. The three pieces of infomation you need a
 * widget_class => class where widget is defined
 * base_element_tag => tag of the element the widget inherits
 
-```ruby
-	PageObject.register_widget(:auto_complete, AutoComplete, 'text_Field')
-```
+{% highlight ruby %}
+PageObject.register_widget(:auto_complete, AutoComplete, 'text_Field')
+{% endhighlight %}
 
 ## Usage
 
-```ruby
+{% highlight ruby %}
 class TestPage
 	include PageObject
 
 	auto_complete(:city, :id => 'City')
 
 end
-```
+{% endhighlight %}
 
 This will define two methods we can use with in our page, 
 
@@ -77,7 +77,7 @@ Lets change that, here are the ways to add behaviour to the widget.
 
 One way we can do this is by defining a class level method in our new elements class
 
-```ruby
+{% highlight ruby %}
 class AutoComplete < PageObject::Elements::TextField
 
 	def self.accessor_methods(accessor, name)
@@ -95,7 +95,7 @@ class AutoComplete < PageObject::Elements::TextField
 	end
 
 end
-```
+{% endhighlight %}
 
 This will define the "#{name}=", and "#{name}".
 
@@ -106,7 +106,7 @@ since the methods are dynamically generated based on the element name.
 
 So inorder to interact with the element we need to think meta. 
 
-```ruby
+{% highlight ruby %}
 	def self.accessor_methods(accessor, name)
 
 		accessor.send :define_method, "#{name}=" do |value|
@@ -114,7 +114,7 @@ So inorder to interact with the element we need to think meta.
 	    end
 
 	end
-```
+{% endhighlight %}
 
 In the above code example, the *self.send("#{name}_element")* is the interesting piece, because
 self in the context of the define_method block is actually the object in which the accessor method was called on. 
@@ -123,14 +123,14 @@ self in the context of the define_method block is actually the object in which t
 
 All this means is that in the example below, self is an instance of TestPage.
 
-```ruby
+{% highlight ruby %}
 class TestPage
 	include PageObject
 
 	auto_complete(:city, :id => 'City')
 
 end
-```
+{% endhighlight %}
 
 ##The other way
 
@@ -138,7 +138,7 @@ Sometimes using the accessor methods is not a viable option, because we need to 
 
 To add behavior to an instance of a class, simply add instance methods 
 
-```ruby
+{% highlight ruby %}
 class AutoComplete < PageObject::Elements::TextField
 
 	def set(value)
@@ -146,7 +146,7 @@ class AutoComplete < PageObject::Elements::TextField
 	end
 
 end
-```
+{% endhighlight %}
 
 ## Gotchas
 
@@ -162,7 +162,7 @@ Encapsulating private behaviour is not as easy as using the **private** section.
 
 Example: 
 
-```ruby
+{% highlight ruby %}
 class AutoComplete < PageObject::Elements::TextField
 
 	def self.accessor_methods(accessor, name)
@@ -181,4 +181,4 @@ class AutoComplete < PageObject::Elements::TextField
 
 	end
 end
-```
+{% endhighlight %}
