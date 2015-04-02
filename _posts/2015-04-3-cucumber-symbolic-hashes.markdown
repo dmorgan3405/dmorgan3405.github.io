@@ -7,7 +7,6 @@ categories: cucumber atdd test-data-arrangement
 
 The Problem
 Late last year my current team's cucumber test suite was growing at a consistent rate. 
-
 Except for one thing, we were creating a bit of a mess in the code that was responsible for arranging our test data.
 
 Simply put: We were writing too much test data management code. 
@@ -84,11 +83,11 @@ end
 *Please forgive the overly simple example, but I wanted to express the value that I see in this approach with a concrete example, and couldn't use an example from the code base I am currently working in.*
 
 The issues I saw with this approach/pattern were: 
-The default values for the factory were divided between two places.
-Looking up the position in the EmployeeFactory.create method forced this.
-The mapping of ["Key"] to [:key] seemed to be redundant. 
-The number of methods needed to support a single table seemed too high. 
-It was quickly becoming a mess, and hard to understand. 
+
+* The default values for the factory were divided between two places. Looking up the position in the EmployeeFactory.create method forced this.
+* The mapping of ["Key"] to [:key] seemed to be redundant. 
+* The number of methods needed to support a single table seemed too high. 
+* It was quickly becoming a mess, and hard to understand. 
 
 ##A New Approach
 
@@ -165,12 +164,16 @@ FactoryGirl.define do
 end
 {% endhighlight %}
 
-Using this approach, over the past ~six months, has allowed my current team to:
-Write clean and reusable cucumber step definitions.
-Write only a very thin factory layer, by taking full advantage of the functionality of Factory Girl.
+Using this approach, over the past year and a half, has allowed my current team to:
+
+* Write clean and reusable cucumber step definitions.
+* Write only a very thin factory layer, by taking full advantage of the functionality of Factory Girl.
+
 In my opinion, the flexibility of this approach has allowed our team to add scenarios quicker and easier. Thus far it also seems to be a very flexible and extensible solution to our problem. 
 
 Drawbacks that I have seen so far:
-Promotes tight coupling of cucumber table headers to database column names.
-Team members need to understand how lazy and transient attributes work in FactoryGirl. 
+
+* Promotes tight coupling of cucumber table headers to database column names.
+* Team members need to understand how lazy and transient attributes work in FactoryGirl. 
+
 I welcome feedback on this approach, and would love to hear about your approaches and patterns for managing test data.
