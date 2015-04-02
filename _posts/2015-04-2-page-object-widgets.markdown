@@ -1,11 +1,9 @@
 ---
 layout: post
-title:  "PageObject-Widgets"
+title:  "#PageObject::Widgets"
 date:   2015-04-2 16:09:00
 categories: jekyll update
 ---
-
-#PageObject::Widgets
 
 Creating Custom Element Widgets to use with Page Object
 
