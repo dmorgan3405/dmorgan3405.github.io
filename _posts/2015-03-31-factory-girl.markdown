@@ -5,8 +5,6 @@ date:   2015-03-31 12:00:00
 categories: factorygirl cucumber
 ---
 
-##Ongoing factory girl lightning talk
-
 She's just a factory girl,
 Living in an Active Record World
 
