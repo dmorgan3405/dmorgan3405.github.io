@@ -6,7 +6,9 @@ categories: cucumber atdd test-data-arrangement
 ---
 
 The Problem
-Late last year my current team's cucumber test suite was growing at a consistent rate. (Shibby!) Except for one thing, we were creating a bit of a mess in the code that was responsible for arranging our test data.
+Late last year my current team's cucumber test suite was growing at a consistent rate. 
+
+Except for one thing, we were creating a bit of a mess in the code that was responsible for arranging our test data.
 
 Simply put: We were writing too much test data management code. 
 
