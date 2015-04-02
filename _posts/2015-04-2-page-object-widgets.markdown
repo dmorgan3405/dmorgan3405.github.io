@@ -166,7 +166,7 @@ Example:
 class AutoComplete < PageObject::Elements::TextField
 
 	def self.accessor_methods(accessor, name)
-
+	
 		accessor.send :define_method, "#{name}=" do |value|
 	        #code for desired behaviour
 	    end
