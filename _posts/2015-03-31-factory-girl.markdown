@@ -10,17 +10,17 @@ categories: factorygirl cucumber
 She's just a factory girl,
 Living in an Active Record World
 
-# Lazy Attributes
+#Lazy Attributes
 	
-##For instance, if we had an attribute called formula_name....
+For instance, if we had an attribute called formula_name....
 	
 formula_name 'Formula One'
 
-##But we want to use Faker to randomly generate it...
+But we want to use Faker to randomly generate it...
 
 formula_name Faker::Lorem.characters(10) 
 
-##However if we create two formulas they would have the same name...enter lazy attributes
+However if we create two formulas they would have the same name...enter lazy attributes
 
 formula_name { Faker::Lorem.characters(10) }
 	
@@ -48,11 +48,11 @@ transient do
 end
 {% endhighlight %}
 
-#You can access ignored attributes in the factory body. 
+You can access ignored attributes in the factory body. 
 
 quality_id { Quality.find_by(quality) || Defaults::QUALITY_TYPE_ID }
 
-#The default value is only important if you are using the attribute in a dependent attribute
+The default value is only important if you are using the attribute in a dependent attribute
 	
 # Inheritance 
 
